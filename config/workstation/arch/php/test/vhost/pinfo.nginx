@@ -1,0 +1,14 @@
+server {
+    include     includes/custom/php_laravel_conf.nginx;
+    listen      80;
+    server_name pinfo.app;
+
+    # DO NOT PUT ROOT DIRECTIVE INSIDE LOCATION BLOCK
+    root        /srv/http;
+
+    location / {
+        index  pinfo.php
+        try_files $uri $uri/ /index.php?$query_string;
+    }   # END LOCATION BLOCK
+
+}   # END SERVER BLOCK
